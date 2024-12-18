@@ -1,0 +1,18 @@
+<!-- begin item -->
+<div class="row">
+    <div class ="col-md-4">
+        <a href="{{ item.url | absolute_url }}">
+            {% if item.image %} <img class="rounded mb-4" src="{{ site.baseurl }}/{{ item.image }}" alt="{{ item.title }}"> {% endif %}
+        </a>
+    </div>
+    <div class="col-md-8">
+        <h2 class="h5 serif-font"><a href="{{ item.url | absolute_url }}">{{ item.title }}</a></h2>
+        <p class="text-muted">
+            <a href="{{ item.url | absolute_url }}">{{ item.excerpt | strip_html | truncatewords:40 }}</a></p>
+        <div class="metafooter">
+            <div class="wrapfooter small d-flex align-items-center">
+                <a href="{{ item.url | absolute_url }}"><span class="post-date">{{ item.date | date_to_string }}</span></a>
+            </div>
+        </div>
+    </div>
+</div>

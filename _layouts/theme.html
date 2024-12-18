@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="col-lg-9 mx-auto">
+
+    <div class="mainheading">
+        <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+
+    
+        <div style="display: inline-block">
+        {% if page.image %}
+        <figure class="w-50 mx-auto w-50 float-right profile">
+            <img class="img-fluid rounded " src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">
+            <figcaption align="right" class="tiny pt-1">{{ page.image-caption }}</caption>
+        </figure>
+        {% endif %}
+        <div class="article-post serif-font">
+        {{content}}
+        </div>
+        </div>
+    
+    <!-- Projects -->
+    <div class="article-post serif-font">
+        <h3>Projects</h3>
+    </div>
+    <section class="row">
+    {% assign theme = page.title | downcase %}
+        {% for item in site.pages %}
+          {% if item.type == "project" and item.themes contains theme %}
+            <div class="col-md-4 mb-1">
+            {% include itembox.html %}
+            </div>
+          {% endif %}
+        {% endfor %}
+    </section>
+
+    <div class="article-post serif-font">
+        <h3>Related publications</h3>
+        <div class="publications">
+            {% bibliography --query @*[theme ~= {{theme}}]%}
+        </div>
+    </div>
+
+
+</div>
+

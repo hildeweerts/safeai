@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="col-lg-9 mx-auto">
+    <div class="mainheading">
+        <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+        <h2 class="mb-4">Team</h2>
+        <section class="row">
+            {% for page in site.pages %}
+                {% if page.role == "Director" %}
+                    <div class="col-6 col-md-3 mb-5">
+                        {% include profilebox.html %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% for page in site.pages %}
+            {% if page.type contains "profile" and page.role != "Director" and page.type contains "team" %}
+            <div class="col-6 col-md-3 mb-5">
+                {% include profilebox.html %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </section>
+</div>

@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="col-lg-10 mx-auto">
+
+    <div class="mainheading">
+        <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+
+    <div class="article-post serif-font">
+        {{content}}
+    </div>
+    
+    <section class="row">
+        {% for item in site.posts %}
+        {% assign title = page.title | downcase %}
+        {% if item.categories contains title %}
+            <div class="col-md-12 mb-5">
+            {% include itemboxwide.html %}
+            </div>
+        {% endif %}
+        {% endfor %}
+    </section>
+</div>

@@ -1,0 +1,12 @@
+<!-- begin profile -->
+<div class="card">
+    
+    <a href="{{ page.url | absolute_url }}">
+        {% if page.image %} <img class="rounded mb-2 w-100" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}"> {% endif %}
+    </a>
+    <div class="card-block">
+        <h4 class="card-title mb-0"><a href="{{ page.url | absolute_url }}">{{ page.title }}</a></h4>
+        <p class="card-text">{{ page.role }}</p>
+    </div>
+</div>
+<!-- end profile -->

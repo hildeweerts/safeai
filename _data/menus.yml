@@ -1,0 +1,32 @@
+# Top Menu
+topmenu:
+  - title: Home
+    url: ""
+
+  - title: News
+    url: "news/"
+
+  - title: About us
+    url: "about-us/"
+
+  - title: Research
+    url: "research/"
+    subfolderitems:
+      - page: Algorithmic Fairness
+        url: /themes/algorithmic-fairness.html
+
+  - title: People
+    url: "people/"
+
+  # - title: Cool link
+  #   url: https://2025.ewaf.org/
+  #   class: "ml-2 btn btn-dark text-white px-3"
+  #   external: true
+
+# Footer Menu
+footermenu:
+  - title: Home
+    url: ""
+
+  - title: Contact
+    url: "contact/"

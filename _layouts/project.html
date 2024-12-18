@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<div class="row">
+
+  <div class="col-lg-9 mx-auto">
+
+    <div class="mainheading">
+        <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+                  
+    <!-- Post Categories -->
+    <div class="after-post-tags">
+        <ul class="tags">
+            {% assign themes = page.themes | sort %}
+            {% for theme in themes %}
+            <li>
+              <a href="{{ site.baseurl }}/themes/{{ theme | slugify }}">{{ theme }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- End Categories -->
+
+     <div class="article-post serif-font">
+      <div style="display: inline-block">
+      {% if page.image %}
+        <img class="rounded img-fluid mx-auto w-50 float-right profile" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">
+      {% endif %}
+      {{content}}
+      </div>
+     </div>
+
+      <!-- People -->
+      {% unless page.related_people %}
+      {% else %}
+      <div class="article-post serif-font"><h3>People</h3></div>
+        <section class="row">
+            {% for name in page.related_people %}
+                {% for page in site.pages %}
+                    {% if page.title == name %}
+                        <div class="col-4 col-sm-2 small-profilebox">
+                            {% include profilebox.html %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </section>
+      {% endunless %}
+
+      <div class="article-post serif-font">
+      <!-- Publications -->  
+      {% unless page.selected_pubs %}
+      {% else %}
+        <h3>Related publications</h3>
+        <div class="publications">
+          <div style="display:none">
+          {% for key in page.selected_pubs %}
+            {% cite key %}
+          {% endfor %}
+          </div>
+          {% bibliography --cited %}
+        </div>
+      {% endunless %}
+      </div>
+
+    </div>
+  </div>
+</div>

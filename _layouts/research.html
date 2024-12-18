@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<div class="col-lg-9 mx-auto ">
+
+    <div class="mainheading">
+      <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+  
+    <div class="article-post serif-font">
+      {{content}}
+    </div>
+
+    <div class="article-post serif-font">
+        <h3>Our focus areas</h3>
+    </div>
+    <section class="row">
+        {% for theme in page.themes %}
+            {% for item in site.pages %}
+                {% assign projecttheme = item.title | downcase %}
+                {% if projecttheme == theme %}
+                <div class="col-md-6 mb-1">
+                {% include itembox.html %}
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </section>
+
+    <div class="article-post serif-font">
+        <h3>Projects</h3>
+    </div>
+    <section class="row">
+    {% for item in site.pages %}
+        {% if item.type == 'project' %}
+        <div class="col-md-3 mb-1">
+        {% include itembox.html %}
+        </div>
+        {% endif %}
+    {% endfor %}
+    </section>
+
+    <div class="article-post serif-font">
+        <h3>Publications</h3>
+        <div class="publications">
+            {% bibliography %}
+        </div>
+    </div>
+
+</div>

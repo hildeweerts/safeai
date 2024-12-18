@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col-lg-9 mx-auto">
+    <div class="mainheading">
+        <h1 class="posttitle">{{ page.title }}</h1>
+    </div>
+
+    <div class="article-post serif-font">
+        <!-- Bio block -->
+        <div style="display: inline-block">
+        {% if page.image %}
+          <img class="rounded img-fluid mx-auto float-right profile" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">
+          <h3 class="mt-0">About</h3>
+          {{content}}
+        {% else %}
+          {{content}}
+        {% endif %}
+        </div>
+      </div>
+
+      <!-- Projects -->
+        {% for project in site.pages %}
+            {% if project.type == "project" and project.related_people contains page.title %}
+            <div class="article-post serif-font">
+              <h3>Projects</h3>
+            </div>
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        <section class="row">
+          {% for item in site.pages %}
+            {% if item.type == "project" and item.related_people contains page.title %}
+              <div class="col-md-4 mb-5">
+              {% include itembox.html %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </section>
+
+
+      <!-- Publications --> 
+      <div class="article-post serif-font">
+        {% unless page.selected_pubs %}
+          <h3>Selected publications</h3>
+          <div class="publications">
+            {% bibliography --query @*[author ~= {{page.first_name}} || author ~= {{page.last_name}}]%}
+          </div>
+        {% else %}
+          <h3>Selected publications</h3>
+          <div class="publications">
+            <div style="display:none">
+            {% for key in page.selected_pubs %}
+              {% cite key %}
+            {% endfor %}
+            </div>
+            {% bibliography --cited %}
+          </div>
+        {% endunless %}
+      </div>
+    </div>
+  </div>

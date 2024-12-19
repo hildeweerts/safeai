@@ -153,13 +153,37 @@ small, .small {
     padding: 5rem 5rem 0.01rem 5rem;
 }
 
+
 .hero-caption {
     text-align: right;
-    width: 100%;
-    padding-right: 10em;
+    width: calc(100% - 10em);
     position:absolute; 
     bottom: 0;
 }
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1rem 1rem 0.01rem 1rem;
+    }
+
+    .hero-caption {
+        width: calc(100% - 4rem);
+        padding-left: 2rem;
+    }
+
+    .hero h1 {
+        font-size:2.2em!important;
+        line-height: 1.5em!important;
+    }
+    
+    .hero p {
+        color:#fff;
+        font-size:1.4em;
+        line-height:1.8em;
+    }
+}
+
+
 
 .hero-btn {
     background-color: $white;

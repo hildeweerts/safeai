@@ -183,8 +183,6 @@ small, .small {
     }
 }
 
-
-
 .hero-btn {
     background-color: $white;
 }
@@ -728,6 +726,15 @@ span.navigation:before {
     padding-left: 3em;
     padding-bottom: 2em;
     width: 50%;
+}
+
+@media (max-width: 480px) {
+    .profile {
+        padding-left: 0em;
+        padding-bottom: 2em;
+        width: 100%;
+        
+    }
 }
 
 .small-profilebox  {
